@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+  <title>Document</title>
+</head>
+<body>
+  <h1>Chat Room</h1>
+  <input id="sendTxt" type="text">
+  <button id="sendBtn">发送</button>
+</body>
+<script>
+  $(function () {
+    var websocket = new WebSocket("ws://10.236.94.247:3000/");
+    function showMessage(str) {
+      var div = document.createElement('div');
+      div.innerHTML = str;
+      document.body.appendChild(div);
+    }
+    websocket.onopen = function () {
+      console.log('websocket open');
+      document.getElementById("sendBtn").onclick = function () {
+        var txt = document.getElementById("sendTxt").value;
+        if (txt) {
+          websocket.send(txt);
+        }
+      }
+    }
+    websocket.onclose = function () {
+      console.log('websocket close');
+    }
+    websocket.onmessage = function (e) {
+      console.log(e.data);
+      showMessage(e.data);
+    }
+  })
+</script>
+</html>

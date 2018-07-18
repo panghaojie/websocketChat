@@ -1,0 +1,10 @@
+{
+  "name": "chatDome",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "server": "cd server && node ./app.js",
+    "client": "cd client && node ./build/app.js"
+  }
+}
