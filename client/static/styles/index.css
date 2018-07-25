@@ -1,0 +1,7 @@
+.index-bg{
+  height: 500px;
+  background-image: url('../images/indexbg.jpeg');
+  background-size: cover;
+  background-position: 0 center;
+  background-color: rgb(148, 255, 127);
+}
