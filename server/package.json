@@ -6,5 +6,8 @@
   "dependencies": {
     "express": "^4.16.3",
     "nodejs-websocket": "^1.7.1"
+  },
+  "devDependencies": {
+    "body-parser": "^1.18.3"
   }
 }

@@ -12,37 +12,43 @@
 </head>
 <body>
   <div class="index-bg">
-    <div class="wrap wd">
-        <div class="login">
-          <label>
-            <span>姓名：</span>
-            <input type="text">
+    <div class="wd">
+      <div class="wrap">
+        <div class="login-content login">
+          <div class="btn-wrap">
+            <span class="todoBtn" data-todo="login">登录</span>
+            <span class="todoBtn" data-todo="register">注册</span>
+          </div>
+          <label class="name">
+            <input type="text" class="label-cnt" placeholder="用户名" id="name">
+            <span class="label-name">账号</span>
           </label>
-          <label>
-            <span>密码：</span>
-            <input type="password">
+          <label class="pwd">
+            <input type="password" class="label-cnt" placeholder="4-12位密码" id="pwd">
+            <span class="label-name">密码</span>
           </label>
-          <p class="register-link">没有账号，<a class="link">立即注册</a></p>
-          <p class="login-tips"></p>
+          <label class="cfm-pwd">
+            <input type="password" class="label-cnt" placeholder="确认8位密码" id="cfmPwd">
+            <span class="label-name">确认密码</span>
+          </label>
+          <p class="tips hideText"></p>
+          <div class="subbtn" id="submitBtn">
+            提交
+          </div>
+          <p class="register-link change-link">没有账号，
+            <a class="link registerbtn">立即注册</a>
+          </p>
+          <p class="login-link change-link">已有账号，
+            <a class="link loginbtn">立即登录</a>
+          </p>
         </div>
-        <div class="register">
-          <label>
-            <span>姓名：</span>
-            <input type="text">
-          </label>
-          <label>
-            <span>密码：</span>
-            <input type="password">
-          </label>
-          <label>
-            <span>确认密码：</span>
-            <input type="password">
-          </label>
-          <p class="login-link">已有账号，<a class="link">立即登录</a></p>
-          <p class="register-tips"></p>
+        <div class="success">
+          <p>注册成功！<a class="link loginbtn">立即登录</a></p>
         </div>
       </div>
+    </div>
   </div>
-  <img src="./static/images/indexbg.jpeg" alt="">
+  <script src="./static/js/index.js"></script>
+  
 </body>
 </html>

@@ -1,7 +1,201 @@
+html,body{
+  height: 100%;
+}
 .index-bg{
-  height: 500px;
-  background-image: url('../images/indexbg.jpeg');
+  height: 600px;
+  width: 100%;
+  /* height: 100%; */
+  background-image: url('../images/indexbg1.jpeg');
   background-size: cover;
-  background-position: 0 center;
-  background-color: rgb(148, 255, 127);
+  background-position: center center;
+  background-color: #83a7c1;
+  background-repeat: no-repeat;
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  margin: auto;
+}
+.wd{
+  padding: 0.1px;
+  /* margin-top: 200px; */
+}
+.wrap{
+  min-height: 170px;
+  width: 430px;
+  background: #fff;
+  margin-top: 100px;
+  float: right;
+  padding: 30px;
+  box-sizing: border-box;
+}
+.wrap .success{
+  display: none;
+  height: 240px;
+  line-height: 240px;
+  font-size: 14px;
+  text-align: center;
+}
+.wrap .success a {
+  cursor: pointer;
+}
+.registerSuccess .success{
+  display: block;
+}
+.registerSuccess .login-content{
+  display: none;
+}
+.login .cfm-pwd{
+  display: none;
+}
+.login-content label{
+  position: relative;
+  display: block;
+  margin-bottom: 20px;
+}
+.label-cnt{
+  outline: none;
+  border: 1px solid #e0e0e0;
+  width: 338px;
+  height: 20px;
+  line-height: 20px;
+  padding: 8px 15px;
+  font-size: 14px;
+  transition: all linear 0.3s;
+}
+.label-cnt:hover{
+  border-color: #b0b0b0;
+}
+.label-cnt:focus{
+  border-color: #c79d70;
+}
+.label-cnt::-webkit-input-placeholder { 
+  /* transition: color linear 0.1s 0.3s; */
+  color: transparent; 
+}
+.label-cnt::-moz-placeholder { 
+  /* transition: color linear 0.1s 0.3s; */
+  color: transparent; 
+} /* firefox 19+ */
+.label-cnt:-ms-input-placeholder { 
+  /* transition: color linear 0.1s 0.3s; */
+  color: transparent; 
+} /* ie */
+.label-cnt:-moz-placeholder { 
+  
+  color: transparent; 
+}
+
+.label-cnt:focus::-webkit-input-placeholder {
+  transition: color linear 0.3s;
+  color:#b0b0b0;
+}
+.label-cnt:focus::-moz-placeholder {
+  transition: color linear 0.3s;
+  color:#b0b0b0;
+} /* firefox 19+ */
+.label-cnt:focus:-ms-input-placeholder {
+  transition: color linear 0.3s;
+  color:#b0b0b0;
+} /* ie */
+.label-cnt:focus:-moz-placeholder {
+  transition: color linear 0.3s;
+  color:#b0b0b0;
+}
+
+.label-name{
+  color: #b0b0b0;
+  font-size: 14px;
+  display: inline-block;
+  padding: 3px;
+  position: absolute;
+  left: 12px;
+  top: 10px;
+  transition: all linear 0.3s;
+  background: transparent;
+}
+.value-label .label-name {
+  color: #b0b0b0;
+  font-size: 12px;
+  top: -8px;
+  background: #fff;
+}
+.focus-label .label-name {
+  color: #c79d70;
+  font-size: 12px;
+  top: -8px;
+  background: #fff;
+}
+.btn-wrap{
+  height: 40px;
+  margin-bottom: 20px;
+  display: inline-block;
+}
+.btn-wrap .todoBtn {
+  display: inline-block;
+  height: 40px;
+  line-height: 40px;
+  font-size: 14px;
+  width: 100px;
+  text-align: center;
+  border-bottom: 1px solid #b0b0b0;
+  cursor: pointer;
+  color: #333;
+}
+.login-content .btn-wrap .todoBtn:nth-child(2) {
+  background: #c79d70;
+  color: #eee;
+  margin-left: -5px;
+  border-bottom-color: #c79d70; 
+}
+.login .btn-wrap .todoBtn:nth-child(1) {
+  background: #c79d70;
+  color: #eee;
+  border-bottom-color: #c79d70; 
+}
+.login .btn-wrap .todoBtn:nth-child(2) {
+  background: #fff;
+  color: #333;
+  border-bottom-color: #b0b0b0;
+}
+.change-link{
+  text-align: right;
+}
+.change-link a{
+  cursor: pointer;
+}
+.register-link{
+  display: none;
+}
+.login .login-link{
+  display: none;
+}
+.login .register-link {
+  display: block;
+}
+.register-link,.login-link{
+  font-size: 12px;
+}
+.tips{
+  font-size: 12px;
+  height: 20px;
+  position: relative;
+  top: -10px;
+  color: #f00;
+  transition: color linear 0.3s;
+}
+.tips.hideText{
+  color: transparent;
+}
+.subbtn{
+  width: 250px;
+  text-align: center;
+  margin: -10px auto 10px auto;
+  font-size: 14px;
+  height: 35px;
+  line-height: 35px;
+  color: #eee;
+  background: #c79d70;
+  cursor: pointer;
 }
