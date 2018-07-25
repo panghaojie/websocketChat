@@ -39,6 +39,7 @@ app.get('/test', function (req, res) {
 
 /*
   code: 
+     0 用户已经登录
     -1 用户不存在
     1 成功
     2 密码不正确
@@ -47,14 +48,20 @@ app.post('/login',function(req,res){
   var obj = req.body;
   fs.readFile(userJson, 'utf8', function (err, data) {
     if (err) console.log(err);
-    userList = JSON.parse(data);
+    var userList = JSON.parse(data);
     var code = -1;
     var _data = {}
     for (var i = 0, len = userList.length; i < len; i++) {
       if (userList[i].name == obj.name) {
         if (userList[i].pwd == obj.pwd) {
-          code = 1
-          _data.name = obj.name;
+          if(userList[i].isonline){
+            code = 0;
+          } else {
+            code = 1;
+            _data.name = obj.name;
+            userList[i].isonline = true;
+            fs.writeFileSync(userJson, JSON.stringify(userList));
+          }
         } else {
           code = 2
         }
@@ -66,8 +73,42 @@ app.post('/login',function(req,res){
       data: _data
     })
   });
-  
-})
+});
+
+/*
+  code: 
+    1 注册成功
+    2 用户名已存在
+*/
+app.post('/register',function(req,res){
+  var obj = req.body;
+  fs.readFile(userJson, 'utf8', function (err, data) {
+    if (err) console.log(err);
+    var userList = JSON.parse(data);
+    var code = 1;
+    for (var i = 0, len = userList.length; i < len; i++) {
+      if (userList[i].name == obj.name) {
+        code = 2;
+      }
+    }
+    if(code == 2){
+      res.status(200),
+      res.json({
+        code: code,
+        data: {}
+      })
+      return
+    }
+    userList.push({name: obj.name,pwd:obj.pwd,isonline: false})
+    var t = JSON.stringify(userList);
+    fs.writeFileSync(userJson, t);
+    res.status(200),
+    res.json({
+      code: 1,
+      data: {}
+    })
+  });
+});
 
 //配置服务端口
 var server = app.listen(9999, function () {

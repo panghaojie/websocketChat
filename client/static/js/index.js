@@ -23,6 +23,7 @@ $(function(){
       $('.todoBtn').on('click',function(){
         var todo = $(this).data('todo');
         _self.data.type = todo;
+        _self.initInput();
         if (todo == 'login') {
           !$('.login-content').hasClass('login') && $('.login-content').addClass('login');
         } else {
@@ -32,11 +33,15 @@ $(function(){
       // 立即注册
       $('.registerbtn').on('click',function(){
         $('.login-content').removeClass('login');
+        _self.data.type = 'register';
+        _self.initInput();
       })
       // 立即登录
       $('.loginbtn').on('click', function () {
         $('.wrap').hasClass('registerSuccess') && $('.wrap').removeClass('registerSuccess')
-        $('.login-content').addClass('login')
+        $('.login-content').addClass('login');
+        _self.data.type = 'login';
+        _self.initInput();
       })
       $('#submitBtn').on('click',function(){
         var type = _self.data.type;
@@ -49,6 +54,12 @@ $(function(){
           return
         }
       })
+    },
+    initInput() {
+      $('#name').val('');
+      $('#pwd').val('');
+      $('#cfmPwd').val('');
+      $('.wrap label').removeClass('value-label');
     },
     loginFn() {
       var _self = this;
@@ -76,6 +87,22 @@ $(function(){
         data: {name,pwd},
         successFn: function (res) {
           console.log(res);
+          /*
+            code: 
+              -1 用户不存在
+              1 成功
+              2 密码不正确
+          */
+          if(res.code == -1){
+            _self.errorFn('用户不存在！')
+          } else if(res.code == 2){
+            _self.errorFn('密码不正确！')
+          } else if(res.code == 0){
+            _self.errorFn('用户已经登录！')
+          } else if(res.code == 1){
+            console.log('登录成功！')
+          }
+          
         }
       })
     },
@@ -104,6 +131,24 @@ $(function(){
         _self.errorFn('两次输入密码不一样');
         return
       }
+      _self.ajaxFn({
+        url: _self.data.baseUrl + '/register',
+        type: 'post',
+        data: {name,pwd},
+        successFn: function (res) {
+          console.log(res);
+          /*
+            code: 
+              1 注册成功
+              2 用户名已存在
+          */
+          if(res.code == 2){
+            _self.errorFn('用户名已经存在')
+          } else if(res.code == 1){
+            $('.wrap').addClass('registerSuccess');
+          }
+        } 
+      })
     },
     errorFn(msg) {
       this.data.timer && clearTimeout(this.data.timer);
