@@ -1,32 +1,68 @@
 var ws = require('nodejs-websocket');
 var PORT = 3000;
 
-var userCount = 0;
+var userName = '';
+var count = 0;
 
 var createWs = function(){
+
   function broadcast(str) {
     server.connections.forEach(function (connection) {
       connection.sendText(str)
     })
   }
 
+  function getTime() {
+    var time = new Date();
+    var h = time.getHours() < 10 ? ('0' + time.getHours()) : time.getHours();
+    var m = time.getMinutes() < 10 ? ('0' + time.getMinutes()) : time.getMinutes();
+    return h + ' : ' + m;
+  }
+
   var server = ws.createServer(function(conn){
-    console.log('a new user come in')
-    userCount++
-    conn.nickname = 'user'+userCount;
-    broadcast(conn.nickname + ' come in');
+    count++
     conn.on('text',function (str) {
-      console.log('received ' + str)
-      broadcast(str)
+      var obj = JSON.parse(str);
+      var msg;
+      if(obj.type == 'join'){
+        var msg = {
+          type: 'sys',
+          content: obj.content + '加入聊天',
+          from: obj.from
+        }
+        userName = obj.from;
+      }else {
+        msg = {
+          type: 'text',
+          content: obj.content,
+          from: obj.from
+        }
+      } 
+      broadcast(JSON.stringify(msg));
     })
     conn.on('close',function(code,reason){
-      console.log('connection closed')
-      broadcast(conn.nickname + ' left')
-      userCount--
+      count--
+      var msg = {
+        type: 'sys',
+        content: userName + '离开',
+        from: userName
+      }
+      broadcast(JSON.stringify(msg))
     })
     conn.on('error',function(err){
       console.log('this is a error ',err)
     })
+    if(count == 1){
+      setInterval(function(){
+        var msg = {
+          type: 'time',
+          content: getTime(),
+          from: userName
+        }
+        broadcast(JSON.stringify(msg));
+      },2 * 60 * 1000)
+    }
+    
   }).listen(PORT)
   console.log('websocket server is ready');
   

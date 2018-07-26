@@ -1,0 +1,155 @@
+.chat-wd{
+  width: 800px;
+  margin: 20px auto;
+  border: 1px solid #b0b0b0;
+  border-radius: 3px;
+}
+.title{
+  height: 50px;
+  border-bottom: 1px solid #b0b0b0;
+  padding-left: 15px;
+  font-size: 16px;
+}
+.title .roomName{
+  line-height: 50px;
+  color: #c79d70;
+} 
+.title .user-info{
+  float: right;
+  position: relative;
+}
+.userName,
+.adminName {
+  display: inline-block;
+  padding: 0 15px;
+  line-height: 50px;
+  color: #c79d70;
+  cursor: pointer;
+}
+.tri{
+  display: inline-block;
+  width: 0;
+  height: 0;
+  border: 5px solid #c79d70;
+  border-color: #c79d70 transparent transparent transparent;
+  vertical-align: middle;
+}
+.user-compute{
+  position: absolute;
+  left: 1px;
+  top: 48px;
+  width: 103%;
+  /* box-sizing: border-box; */
+  border: 1px solid #b0b0b0;
+  background: #fff;
+  z-index: 8;
+}
+.user-compute li{
+  height: 35px;
+  line-height: 35px;
+  color: #333;
+  font-size: 14px;
+  cursor: pointer;
+  padding: 0 15px;
+}
+.user-compute li:hover{
+  background: #c79d70;
+  color: #eee;
+}
+.hide{
+  display: none;
+}
+.chat-main{
+  width: 100%;
+  height: 500px;
+  border-bottom: 1px solid #b0b0b0;
+  padding: 15px;
+  box-sizing: border-box;
+  background: #f9f9f9;
+}
+.chat-wrap{
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  font-size: 14px;
+  
+}
+.name{
+  font-size: 12px;
+  line-height: 20px;
+  color: #999;
+}
+.chat-wrap li{
+  margin-bottom: 10px;
+}
+.content{
+  max-width: 350px;
+  background: #c79d70;
+  line-height: 25px;
+  border-radius: 3px;
+  padding: 5px 10px;
+  color: #333;
+  position: relative;
+  z-index: 1;
+}
+.content:before{
+  content: '';
+  display: block;
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  z-index: -1;
+}
+.self-content{
+  text-align: right;
+  margin-right: 20px;
+}
+.self-content .content{
+  float: right;
+  background-color: #83a8f2;
+}
+.self-content .content:before {
+  background: #83a8f2;
+  transform: rotate(14deg) skewX(40deg);
+  right: -3px;
+  top: 4px;
+}
+.user-content{
+  text-align: left;
+  margin-left: 20px;
+}
+.user-content .content{
+  float: left;
+}
+.user-content .content:before{
+  background: #c79d70;
+  transform: rotate(-14deg) skewX(-40deg);
+  left: -3px;
+  top: 4px;
+}
+.sys-content,
+.time-content {
+  text-align: center;
+  color: #ccc;
+}
+
+.time{
+  display: inline-block;
+  padding: 5px;
+  margin: 0 auto;
+  background: #ccc;
+  color: #fff;
+  font-size: 12px;
+  border-radius: 3px;
+}
+#area{
+  padding: 20px;
+  line-height: 25px;
+  font-size: 14px;
+  box-sizing: border-box;
+  width: 800px;
+  height: 150px;
+  border: none;
+  resize: none;
+  outline: none;
+}

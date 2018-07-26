@@ -110,6 +110,29 @@ app.post('/register',function(req,res){
   });
 });
 
+app.post('/logout', function (req, res) {
+  var obj = req.body;
+  fs.readFile(userJson, 'utf8', function (err, data) {
+    if (err) console.log(err);
+    var userList = JSON.parse(data);
+    var code = -1;
+    var _data = {}
+    for (var i = 0, len = userList.length; i < len; i++) {
+      if (userList[i].name == obj.name) {
+        code = 1;
+        _data.name = obj.name;
+        userList[i].isonline = false;
+        fs.writeFileSync(userJson, JSON.stringify(userList));
+      }
+    }
+    res.status(200),
+      res.json({
+        code: code,
+        data: _data
+      })
+  });
+});
+
 //配置服务端口
 var server = app.listen(9999, function () {
   var host = server.address().address;

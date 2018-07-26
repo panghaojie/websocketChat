@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=q, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="../lib/reset.css">
+  <link rel="stylesheet" href="../static/styles/common.css">
+  <link rel="stylesheet" href="../static/styles/chat.css">
+  <script src='../lib/jquery.min.js'></script>
+  <script src='../static/js/common.js'></script>
+  <title>聊天室</title>
+</head>
+<body>
+  <div class="chat-wd">
+    <div class="title">
+      <span class="roomName">聊天室</span>
+      <div class="user-info">
+        <span class="userName">
+          <span class="adminName">admin</span> 
+          <i class="tri"></i>
+        </span>
+        <ul class="user-compute hide">
+          <li class="logout">退出</li>
+        </ul>
+      </div>
+    </div>
+    <div class="chat-main">
+      <ul class="chat-wrap">
+        <!-- <li class="self-content">
+            <p class="name">mine</p>
+            <div class="content-wrap clearFixed">
+              <p class="content">
+                这是我自己发送的内容
+              </p>
+            </div>
+        </li> -->
+        <!-- <li class="sys-content">user1 come in</li> -->
+        <!-- <li class="time-content">
+          <span class="time">
+            11:08
+          </span>  
+        </li> -->
+        <!-- <li class="user-content">
+            <p class="name">user1</p>
+            <div class="content-wrap clearFixed">
+              <p class="content">
+                这是user1发送的内容
+              </p>
+            </div>
+        </li> -->
+      </ul>
+    </div>
+    <div class="input-wrap">
+      <textarea id="area" placeholder="请输入。。。"></textarea>
+    </div>
+  </div>
+  <script src='../static/js/chat.js'></script>
+</body>
+</html>

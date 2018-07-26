@@ -101,6 +101,8 @@ $(function(){
             _self.errorFn('用户已经登录！')
           } else if(res.code == 1){
             console.log('登录成功！')
+            $$.setCookie('name',name);
+            window.location.href = '/views/chat.html';
           }
           
         }
@@ -168,6 +170,12 @@ $(function(){
           console.log(err);
         }
       })
+    },
+    judgeLogin(){
+      var name = $$.getCookie('name');
+      if(name){
+        window.location.href = '/views/chat.html';
+      }
     }
   }
   page.init();

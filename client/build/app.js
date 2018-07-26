@@ -14,7 +14,7 @@ var mimeTypes = {
 var lookup = function(pathName) {
     let ext = path.extname(pathName);
     ext = ext.split('.').pop();
-    console.log(ext, '17',pathName)
+    // console.log(ext, '17',pathName)
     return mimeTypes[ext] || mimeTypes['txt'];
 }
 
@@ -26,6 +26,7 @@ var respondNotFound = function (req, res) {
 }
 
 var respondFile = function(pathName, req, res) {
+  // console.log(pathName)
   const readStream = fs.createReadStream(pathName);
   res.setHeader('Content-Type', lookup(pathName));
   readStream.pipe(res);
@@ -34,7 +35,7 @@ var respondFile = function(pathName, req, res) {
 var httpObj = http.createServer(function (req, res) {
   var pathName = req.url == '/' ? './index.html' : '.' + req.url;
   // pathName = __dirname+pathName;
-  console.log(pathName);
+  // console.log(pathName);
   fs.stat(pathName, function(err, stat) {
     // console.log(err)
     if (!err) {
